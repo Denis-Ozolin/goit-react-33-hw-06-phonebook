@@ -5,7 +5,7 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Container, AppTitle } from './App.styled';
 
-export function App() {
+export const App = () => {
   const defaultContacts = [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -15,9 +15,11 @@ export function App() {
     { id: 'id-6', name: 'John Veek', number: '456-45-64' },
     { id: 'id-7', name: 'Gerald Wicher', number: '666-66-66' },
   ];
+
   const [contacts, setContacts] = useState(
     () => JSON.parse(localStorage.getItem('contacts')) || defaultContacts,
   );
+
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -64,4 +66,4 @@ export function App() {
         ))}
     </Container>
   );
-}
+};
