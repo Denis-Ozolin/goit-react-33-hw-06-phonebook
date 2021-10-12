@@ -4,6 +4,7 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Container, AppTitle } from './App.styled';
+import Counter from 'components/Counter/Counter';
 
 export const App = () => {
   const defaultContacts = [
@@ -55,6 +56,7 @@ export const App = () => {
 
   return (
     <Container>
+      <Counter />
       <AppTitle>Phonebook</AppTitle>
       <ContactForm onSubmit={formSubmitHandler} />
       <Filter onGetValue={setFilter} />
