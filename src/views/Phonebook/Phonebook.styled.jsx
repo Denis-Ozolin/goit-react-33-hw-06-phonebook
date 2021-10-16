@@ -4,7 +4,7 @@ export const Container = styled.div`
   padding: 20px 40px;
 `;
 
-export const AppTitle = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   margin: 0;
   margin-bottom: 24px;

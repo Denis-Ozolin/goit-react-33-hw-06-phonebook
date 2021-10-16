@@ -15,19 +15,7 @@ export const deleteContact = id => ({
   payload: id,
 });
 
-// const addContact = (name, number) => {
-//   onCheckUniqueName(name)
-//     ? alert(`${name} is alredy in contacts.`)
-//     : setContacts(state => [
-// {
-//   id: uuidv4(),
-//   name,
-//   number,
-// },
-//         ...state,
-//       ]);
-// };
-
-// const onDeleteContact = id => {
-//   setContacts(state => state.filter(contact => contact.id !== id));
-// };
+export const filterContacts = value => ({
+  type: types.FILTER,
+  payload: value,
+});
