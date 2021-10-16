@@ -2,39 +2,35 @@ import { connect } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contacts-actions';
 import { List } from './ContactList.styled';
 
-const ContactList = ({ contacts, onDelete = null }) => {
+const ContactList = ({ contacts, onDelete }) => {
   return (
-    <>
-      <List>
-        {contacts.length > 0 &&
-          contacts.map(({ id, name, number }) => (
-            <li key={id}>
-              <p>
-                {name}: {number}
-              </p>
-              {onDelete && (
-                <button type="button" onClick={() => onDelete(id)}>
-                  delete
-                </button>
-              )}
-            </li>
-          ))}
-      </List>
-    </>
+    <List>
+      {contacts.length > 0 &&
+        contacts.map(({ id, name, number }) => (
+          <li key={id}>
+            <p>
+              {name}: {number}
+            </p>
+            {onDelete && (
+              <button type="button" onClick={() => onDelete(id)}>
+                delete
+              </button>
+            )}
+          </li>
+        ))}
+    </List>
   );
 };
 
 const getContacts = (allContacts, searchValue) => {
-  const normalizeValue = searchValue.toLowerCase();
   const filteredContacts = allContacts.filter(({ name }) =>
-    name.toLowerCase().includes(normalizeValue),
+    name.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
   return filteredContacts ? filteredContacts : allContacts;
 };
 
-const mapStateToProps = state => {
-  const { items, filter } = state.contacts;
+const mapStateToProps = ({ contacts: { items, filter } }) => {
   return {
     contacts: getContacts(items, filter),
   };
