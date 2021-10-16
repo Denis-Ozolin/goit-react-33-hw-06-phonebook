@@ -1,26 +1,27 @@
 import { connect } from 'react-redux';
-import * as actions from '../../redux/actions';
+import * as actions from '../../redux/counter/counter-actions';
 
-function Counter({ value, onIncrement, onDecrement }) {
+function Counter({ value, step, onIncrement, onDecrement }) {
   return (
     <>
       <h1>{value}</h1>
-      <button onClick={onDecrement}>уменьшить</button>
-      <button onClick={onIncrement}>увеличить</button>
+      <button onClick={() => onDecrement(step)}>уменьшить на {step}</button>
+      <button onClick={() => onIncrement(step)}>увеличить на {step}</button>
     </>
   );
 }
 
 const mapStateToProps = state => {
   return {
-    value: state.counterValue,
+    value: state.counter.value,
+    step: state.counter.step,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIncrement: () => dispatch(actions.increment(5)),
-    onDecrement: () => dispatch(actions.decrement(5)),
+    onIncrement: value => dispatch(actions.increment(value)),
+    onDecrement: value => dispatch(actions.decrement(value)),
   };
 };
 

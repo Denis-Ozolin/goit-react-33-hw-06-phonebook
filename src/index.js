@@ -6,7 +6,7 @@ import { App } from 'components/App/App';
 import store from './redux/store';
 // import {action} from './redux/actions';
 
-console.log(store.getState());
+// console.log(store.getState());
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,11 +1,12 @@
+import { connect } from 'react-redux';
+import { deleteContact } from 'redux/contacts/contacts-actions';
 import { List } from './ContactList.styled';
 
-export const ContactList = ({ title, contacts, onDelete = null }) => {
+const ContactList = ({ contacts, onDelete = null }) => {
   return (
     <>
-      <h2>{title}:</h2>
       <List>
-        {contacts.length &&
+        {contacts.length > 0 &&
           contacts.map(({ id, name, number }) => (
             <li key={id}>
               <p>
@@ -22,3 +23,13 @@ export const ContactList = ({ title, contacts, onDelete = null }) => {
     </>
   );
 };
+
+const mapStateToProps = state => ({
+  contacts: state.contacts.items,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onDelete: id => dispatch(deleteContact(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
