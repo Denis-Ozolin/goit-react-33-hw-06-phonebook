@@ -21,6 +21,7 @@ const middleware = [
   }),
   logger,
 ];
+
 const contactsPersistConfig = {
   key: 'contacts',
   storage,
